@@ -1,7 +1,9 @@
 <?php
 namespace App\dao;
 
- class ServiceVisiteur
+
+use Illuminate\Support\Facades\DB ;
+class ServiceVisiteur
  {
 
 

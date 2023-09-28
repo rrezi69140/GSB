@@ -1,6 +1,6 @@
-@extends('Layouts,master')
+@extends('layout\master')
 @section('content')
-    {!!} Form::open(["url => 'login' ]) !!}
+    {!! Form::open(['url' => 'login' ]) !!}
     <div class="col-md-12 well well-nd">
         <center><h1>Authentification</h1></center>
         <div class="form-horizontal">
