@@ -1,4 +1,4 @@
-@extends('layout\master')
+@extends('layout.master')
 @section('content')
     {!! Form::open(['url' => 'login' ]) !!}
     <div class="col-md-12 well well-nd">

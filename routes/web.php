@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VisiteurController;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('layout/master');
 });
 
-Route::get( '/formLogin', [VisiteurController::class, 'getLogin']);
-Route::post( '/login', [VisiteurController::class, 'signIn']);
-Route::get( '/getLogout', [VisiteurController::class, 'signOut']);
+Route::get( '/formlogin', [VisiteurController::class, 'getLogin']);
 
+Route::post( '/login', [VisiteurController::class, 'signIn']);
+
+
+Route::get( '/getLogout', [ServiceVisiteur::class, 'Logout']);
+
+Route::get('/Lister', function () {
+    return view('/listeFrais');
+});
