@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+
     <table class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>

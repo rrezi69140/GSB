@@ -29,7 +29,7 @@
                     @if (Session::get('id') > 0)
                     <div class="collapse navbar-collapse" id="navbar-collapse-target">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{url('/Lister')}}" data-toggle="collapse" data-target=".navbar-collapse.in">Lister</a></li>
+                            <li><a href="{{url('/getListeFrais')}}" data-toggle="collapse" data-target=".navbar-collapse.in">Lister</a></li>
                             <li><a href="" data-toggle="collapse" data-target=".navbar-collapse.in">Ajouter</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

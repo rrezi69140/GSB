@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisiteurController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\FraisController;
 
 
 /*
@@ -27,6 +28,8 @@ Route::post( '/login', [VisiteurController::class, 'signIn']);
 
 Route::get( '/getLogout', [ServiceVisiteur::class, 'Logout']);
 
-Route::get('/Lister', function () {
-    return view('/listeFrais');
-});
+
+
+Route::get('/getListeFrais', [FraisController::class,'getFraisVisiteur']);
+
+
