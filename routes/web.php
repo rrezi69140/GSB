@@ -31,5 +31,8 @@ Route::get( '/getLogout', [ServiceVisiteur::class, 'Logout']);
 
 
 Route::get('/getListeFrais', [FraisController::class,'getFraisVisiteur']);
+Route::get('/modifierFrais/{id_frais}', [FraisController::class,'updateFrais']);
+
+Route::post('/postmodifierFrais/{id}', array( 'uses' => '\App\Http\Controllers\FraisController@postmodifierFrais', 'as' => 'postmodifierFrais', ));
 
 

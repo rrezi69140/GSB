@@ -2,8 +2,12 @@
 <html lang="fr">
     <head>
         <link  rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
+        <link  rel="stylesheet" href="{{asset('assets/css/bootstrap-theme.css')}}">
+        <link  rel="stylesheet" href="{{asset('assets/css/gsb.css')}}">
         <link  rel="stylesheet" href="{{asset('assets/css/monStyle.css')}}">
         <script   src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+        <script   src="{{asset('assets/js/bootstrap.js')}}"></script>
+        <script   src="{{asset('assets/js/ui-bootstrap-tpls.js')}}"></script>
     </head>
     <body class="body">
         <div class="container">

@@ -17,11 +17,11 @@
                 </td>
                 <td style="text-align:center;">
                     <a class="glyphicon glyphicon-remove" data-toggle="tooltip" data-placement="top" title="Supprimer"
-                        onclick=" javascript:if (confirm('Suppression confirmée ?'))
+                       onclick=" javascript:if (confirm('Suppression confirmée ?'))
                     { window.location ='{{ url('/supprimerFrais') }}/{{ $unFrais->id_frais }}'; }">
                     </a>
                 </td>
             </tr>
         @endforeach
     </table>
-    @include('error')
+    @include('Vues/error')
