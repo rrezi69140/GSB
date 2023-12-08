@@ -2,6 +2,7 @@
 
 namespace App\dao;
 
+use App\Models\Frai;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -45,5 +46,37 @@ class ServiceFrais
             throw new MonException($e->getMessage(), 5);
         }
     }
+//Partie Api
 
+    public function ListeFrais()
+    {
+        try {
+
+            //$ListFrais = response()->json(Frai::all());
+
+            $ListFrais = Frai::all();
+            return $ListFrais;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function ListeFraisByVisiteur($idVisiteur)
+    {
+        try {
+
+            //$ListFrais = response()->json(Frai::all());
+
+            $ListFrais = Frai::with(idVisiteur,$idVisiteur);
+            return $ListFrais;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
 }

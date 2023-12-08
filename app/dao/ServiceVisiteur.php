@@ -48,5 +48,24 @@ class ServiceVisiteur
         {
             Session::put('id', 0);
         }
+
+
+    //Partie Api
+
+    public function ListeVisiteur()
+    {
+        try {
+
+            //$ListFrais = response()->json(Frai::all());
+
+            $ListVisiteur = Frai::all();
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
  }
 
