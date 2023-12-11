@@ -36,7 +36,4 @@ Route::get('/modifierFrais/{id_frais}', [FraisController::class,'updateFrais']);
 Route::post('/postmodifierFrais/{id}', array( 'uses' => '\App\Http\Controllers\FraisController@postmodifierFrais', 'as' => 'postmodifierFrais', ));
 
 
-// route de l'api
 
-Route::get('/Api/GetListeFrais', [\App\dao\ServiceFrais::class, "ListeFrais"]);
-Route::get('/Api/GetListeVisiteur', [\App\dao\ServiceVisiteur::class, "ListeVisiteur"]);

@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// route de l'api
+
+Route::get('/GetListeFrais', [\App\dao\ServiceFrais::class, "ListeFrais"]);
+
+Route::get('/GetListeFraisByVisiteur/{idVisiteur}', [\App\dao\ServiceFrais::class, "ListeFraisByVisiteur"]);
+Route::get('/GetListeVisiteur', [\App\dao\ServiceVisiteur::class, "ListeVisiteur"]);

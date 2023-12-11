@@ -64,13 +64,13 @@ class ServiceFrais
 
     }
 
-    public function ListeFraisByVisiteur($idVisiteur)
+    public function ListeFraisByVisiteur( $idVisiteur)
     {
         try {
 
             //$ListFrais = response()->json(Frai::all());
 
-            $ListFrais = Frai::with(idVisiteur,$idVisiteur);
+            $ListFrais = Frai::where('id_visiteur',$idVisiteur)->get();
             return $ListFrais;
 
         }
