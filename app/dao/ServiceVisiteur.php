@@ -3,9 +3,11 @@
 namespace App\dao;
 
 
+use App\metier\Visiteur;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\Translation\Extractor\Visitor\TranslatableMessageVisitor;
 
 
 class ServiceVisiteur
@@ -52,14 +54,70 @@ class ServiceVisiteur
 
     //Partie Api
 
-    public function ListeVisiteur()
+    //Partie Api
+
+    public function getListVisiteur()
     {
         try {
 
             //$ListFrais = response()->json(Frai::all());
 
-            $ListVisiteur = Frai::all();
+            $ListVisiteur = Visiteur::all();
             return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function GetListeVisiteurByFrais($idFrais)
+    {
+        try {
+
+        ;
+
+            $ListVisiteur =Visiteur::where('id_visiteur',$idFrais)->get();
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function SuprimerUnVisiteur($idVisiteur)
+    {
+        try {
+
+            $ListVisiteur = Visiteur::destroy($idVisiteur);
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function CreateVisiteur(Request $request)
+    {
+        try {
+            $Visiteur = new Visiteur($request->id_laboratoire,
+                $request->id_secteur,
+                $request->nom_visiteur,
+                $request->prenom_visiteur,
+                $request->adresse_visiteur,
+                $request->cp_visiteur,
+                $request->ville_visiteur,
+                $request->date_embauche,
+                $request->login_visiteur,
+                $request->pwd_visiteur,
+                $request->type_visiteur,);
+
+            $Visiteur->save();
 
         }
         catch (QueryException $e) {

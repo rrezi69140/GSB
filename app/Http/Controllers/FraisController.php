@@ -78,9 +78,21 @@ class FraisController extends Controller
 
     // partie de l'api
 
-    function Lister(){
+    function ListerFrais(){
         $unfrais = new ServiceFrais();
-        $Frais  = $unfrais->getFrais();
-        return view('listeFrais', Compact('Frais'));
+        $liseFrais  = response()->json($unfrais->getListFrais());
+        return $liseFrais;
+    }
+
+    function ListeFraisByVisiteur($idVisiteur){
+        $unfrais = new ServiceFrais();
+        $liseFrais  = response()->json($unfrais->GetListeFraisByVisiteur($idVisiteur));
+        return $liseFrais;
+    }
+
+    function SuprimerFrais($idFrais){
+        $unfrais = new ServiceFrais();
+        $liseFrais  = response()->json($unfrais->SuprimerUnFrais($idFrais));
+        return $liseFrais;
     }
 }

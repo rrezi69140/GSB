@@ -48,7 +48,7 @@ class ServiceFrais
     }
 //Partie Api
 
-    public function ListeFrais()
+    public function getListFrais()
     {
         try {
 
@@ -64,7 +64,7 @@ class ServiceFrais
 
     }
 
-    public function ListeFraisByVisiteur( $idVisiteur)
+    public function GetListeFraisByVisiteur( $idVisiteur)
     {
         try {
 
@@ -72,6 +72,19 @@ class ServiceFrais
 
             $ListFrais = Frai::where('id_visiteur',$idVisiteur)->get();
             return $ListFrais;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function SuprimerUnFrais( $idFrais)
+    {
+        try {
+
+            Frai::destroy($idFrais);
 
         }
         catch (QueryException $e) {
