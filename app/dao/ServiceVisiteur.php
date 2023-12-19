@@ -105,19 +105,22 @@ class ServiceVisiteur
     public function CreateVisiteur(Request $request)
     {
         try {
-            $Visiteur = new Visiteur($request->id_laboratoire,
-                $request->id_secteur,
-                $request->nom_visiteur,
-                $request->prenom_visiteur,
-                $request->adresse_visiteur,
-                $request->cp_visiteur,
-                $request->ville_visiteur,
-                $request->date_embauche,
-                $request->login_visiteur,
-                $request->pwd_visiteur,
-                $request->type_visiteur,);
+            $Visiteur  = new \App\Models\Visiteur();
+          //= new Visiteur($request->id_laboratoire,
 
-            $Visiteur->save();
+
+            $Visiteur ->id_secteur =  $request->id_secteur;
+            $Visiteur ->id_secteur=$request->nom_visiteur;
+            $Visiteur ->id_secteur= $request->prenom_visiteur;
+            $Visiteur ->id_secteur= $request->adresse_visiteur;
+            $Visiteur ->id_secteur= $request->cp_visiteur;
+            $Visiteur ->id_secteur= $request->ville_visiteur;
+            $Visiteur ->id_secteur= $request->date_embauche;
+            $Visiteur ->id_secteur= $request->login_visiteur;
+            $Visiteur ->id_secteur= $request->pwd_visiteur;
+            $Visiteur ->id_secteur  =$request->type_visiteur;
+
+            $Visiteur->Save();
 
         }
         catch (QueryException $e) {
