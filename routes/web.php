@@ -36,3 +36,4 @@ Route::get('/modifierFrais/{id_frais}', [FraisController::class,'updateFrais']);
 Route::post('/postmodifierFrais/{id}', array( 'uses' => '\App\Http\Controllers\FraisController@postmodifierFrais', 'as' => 'postmodifierFrais', ));
 
 
+

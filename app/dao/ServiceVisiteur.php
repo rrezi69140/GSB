@@ -3,9 +3,11 @@
 namespace App\dao;
 
 
+use App\metier\Visiteur;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\Translation\Extractor\Visitor\TranslatableMessageVisitor;
 
 
 class ServiceVisiteur
@@ -48,5 +50,83 @@ class ServiceVisiteur
         {
             Session::put('id', 0);
         }
+
+
+    //Partie Api
+
+    //Partie Api
+
+    public function getListVisiteur()
+    {
+        try {
+
+            //$ListFrais = response()->json(Frai::all());
+
+            $ListVisiteur = Visiteur::all();
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function GetListeVisiteurByFrais($idFrais)
+    {
+        try {
+
+        ;
+
+            $ListVisiteur =Visiteur::where('id_visiteur',$idFrais)->get();
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function SuprimerUnVisiteur($idVisiteur)
+    {
+        try {
+
+            $ListVisiteur = Visiteur::destroy($idVisiteur);
+            return $ListVisiteur;
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
+
+    public function CreateVisiteur(Request $request)
+    {
+        try {
+            $Visiteur  = new \App\Models\Visiteur();
+          //= new Visiteur($request->id_laboratoire,
+
+
+            $Visiteur ->id_secteur =  $request->id_secteur;
+            $Visiteur ->id_secteur=$request->nom_visiteur;
+            $Visiteur ->id_secteur= $request->prenom_visiteur;
+            $Visiteur ->id_secteur= $request->adresse_visiteur;
+            $Visiteur ->id_secteur= $request->cp_visiteur;
+            $Visiteur ->id_secteur= $request->ville_visiteur;
+            $Visiteur ->id_secteur= $request->date_embauche;
+            $Visiteur ->id_secteur= $request->login_visiteur;
+            $Visiteur ->id_secteur= $request->pwd_visiteur;
+            $Visiteur ->id_secteur  =$request->type_visiteur;
+
+            $Visiteur->Save();
+
+        }
+        catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+
+    }
  }
 

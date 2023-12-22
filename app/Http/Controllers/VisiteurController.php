@@ -59,4 +59,31 @@ class VisiteurController extends Controller
         }
     }
 
+
+    //partie Api
+
+    function ListerVisiteur(){
+        $unVisiteur= new ServiceVisiteur();
+        $listeFrais  = response()->json($unVisiteur->getListVisiteur());
+        return $listeFrais;
+    }
+
+    function ListeVisiteurByFrais($idVisiteur){
+        $unVisiteur = new ServiceVisiteur();
+        $listeVisiteur  = response()->json($unVisiteur->GetListeVisiteurByFrais($idVisiteur));
+        return $listeVisiteur;
+    }
+
+    function SuprimerVisiteur($idVisiteur){
+        $unVisiteur = new ServiceVisiteur();
+        $listeVisiteur = $unVisiteur->SuprimerUnVisiteur($idVisiteur);
+        return $listeVisiteur;
+    }
+
+    function creeVisiteur($request){
+        $unVisiteur = new ServiceVisiteur();
+        $listeVisiteur = $unVisiteur->CreateVisiteur($request);
+        return $listeVisiteur;
+    }
+
 }

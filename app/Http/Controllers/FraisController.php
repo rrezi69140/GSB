@@ -75,4 +75,24 @@ class FraisController extends Controller
             return view('Vues/pageErreur', compact('monErreur'));
         }
     }
+
+    // partie de l'api
+
+    function ListerFrais(){
+        $unfrais = new ServiceFrais();
+        $liseFrais  = response()->json($unfrais->getListFrais());
+        return $liseFrais;
+    }
+
+    function ListeFraisByVisiteur($idVisiteur){
+        $unfrais = new ServiceFrais();
+        $liseFrais  = response()->json($unfrais->GetListeFraisByVisiteur($idVisiteur));
+        return $liseFrais;
+    }
+
+    function SuprimerFrais($idFrais){
+        $unfrais = new ServiceFrais();
+        $liseFrais  = response()->json($unfrais->SuprimerUnFrais($idFrais));
+        return $liseFrais;
+    }
 }
