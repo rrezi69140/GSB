@@ -18,13 +18,11 @@ class VisiteurController extends Controller
     {
         try {
             $erreur = "";
-            return view('formLogin', compact('erreur'));
+            return view('formLogin',compact('erreur'));
         } catch (MonException $e) {
-            $monErreur = $e->getMessage();
+            $erreur = $e->getMessage();
             return view('formLogin', compact('erreur'));
-        } catch (Exception $e) {
-            $monErreur = $e->getMessage();
-            return view('FormLogin', compact('erreur'));
+
         }
     }
 
@@ -40,9 +38,9 @@ class VisiteurController extends Controller
 
             if ($connected) {
                 if (Session::get('type') === 'P') {
-                    return view('Vues/homePraticien');
+                    return view('layout/master');
                 } else {
-                    return view('home');
+                    return view('layout/master');
                 }
 
             } else {

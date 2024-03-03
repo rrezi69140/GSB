@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\dao\ServiceFrais;
+use App\Exceptions\MonExeption;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use App\metier\Frais;
@@ -43,10 +44,7 @@ class FraisController extends Controller
             return view('Vues/formFrais', compact('unFrais', 'titreVue', 'erreur'));
         } catch (MonException $e) {
             $monErreur = $e->getMessage();
-            return view('Vues/pageErreur', compact('monErreur'));
-        } catch (Exception $e) {
-            $monErreur = $e->getMessage();
-            return view('Vues/error', compact('erreur'));
+            return view('Vues/error', compact('monErreur'));
         }
     }
 
@@ -76,6 +74,8 @@ class FraisController extends Controller
         }
     }
 
+
+
     // partie de l'api
 
     function ListerFrais(){
@@ -94,5 +94,14 @@ class FraisController extends Controller
         $unfrais = new ServiceFrais();
         $liseFrais  = response()->json($unfrais->SuprimerUnFrais($idFrais));
         return $liseFrais;
+    }
+
+    function AjouterFrais(){
+        $id_frais = Session::get('id');
+        $anneemois = date("Y-m-d");
+        $nbjustificatifs = Request::input('nbjustificatifs');
+        $unfrais = new ServiceFrais();
+        $unfrais->PostAddFrais($id_frais,$anneemois,$nbjustificatifs);
+
     }
 }

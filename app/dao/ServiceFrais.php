@@ -27,7 +27,7 @@ class ServiceFrais
         try {
             $leFrais = DB::table('frais')
                 ->Select()
-                ->where('id_frais ', '=', $id_frais)
+                ->where('id_frais', '=', $id_frais)
                 ->get();
             return $leFrais;
         } catch (QueryException $e) {
@@ -35,6 +35,18 @@ class ServiceFrais
         }
     }
 
+    public function ajoutFrais($id_frais, $anneemois, $nbjustificatifs)
+    {
+        try {
+            $id_frais = Session::get('id');
+            $anneemois = date("Y-m-d");
+            DB::table('frais')
+
+                ->ad(['anneemois' => $anneemois, 'nbjustificatifs' => $nbjustificatifs, 'datemodification' => $dateJour]);
+        } catch (QueryException $e) {
+            throw new MonException($e->getMessage(), 5);
+        }
+    }
     public function updateFrais($id_frais, $anneemois, $nbjustificatifs)
     {
         try {
